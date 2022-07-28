@@ -11,16 +11,28 @@
     <header>
         <h1>App Lista de Tareas</h1>
     </header>
-    <form>
-        <input type="text" placeholder="Agrega tu tarea">
-        <button type="submit">+</button>
+    <form id="formulario">
+        <input type="text" id="texto" placeholder="Agrega tu tarea" required autocomplete="off">
+        <button class="add-btn" type="submit">+</button>
+        <button id="ordenar">Ordenar</button>
     </form>
-    <section>
-        <h2>Lista de Tareas</h2>
-        <ul>
-
-        </ul>
+    <section id="contenedor-tareas">
+     
+     </div>
+       
     </section>
+ 
+
+    <template id="template">
+        <div class="tarea">
+            <p>Tarea 1</p>
+            <div class="buttons">
+            <img class="check-icon"src="/assets/check-icon.svg" alt="check icon">
+            <span class="delate-icon">x</span>
+            </div>
+         </div>
+    </template>
+    
     <script src="main.js"></script>
 </body>
 </html>

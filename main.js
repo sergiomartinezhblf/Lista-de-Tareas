@@ -4,7 +4,9 @@ const $template = document.getElementById("template").content;
 const $fragment = document.createDocumentFragment();
 const $btnOrdenar = document.getElementById("ordenar");
 const $contenedor = document.getElementById("contenedor-tareas");
-const db= {};
+let db= {};
+let completada= {};
+let sincompletar={};
 let x = 1;
 
 const genId = ()=> x++;
@@ -71,12 +73,30 @@ const borrarTarea = () =>{
    imprimeTarea();
 };
 
+const ordenarTarea = () =>{
+  document.addEventListener("click", e =>{
+    if(e.target.classList.contains('order')){
+      Object.values(db).forEach(el=>{
+        if(el.Estado){
+          completada[el.Id]=el;
+        }
+         if(!el.Estado){
+          sincompletar[el.Id]=el;} 
+      })
+        console.log(completada);
+        console.log(sincompletar);
+      let nuevo = Object.values(completada).concat(sincompletar);
+      console.log(nuevo);
+      
+    }
+  });
+}
 
 
 
 borrarTarea();
 tareaCompletada();
-
+ordenarTarea();
 
 
 

@@ -85,9 +85,22 @@ const ordenarTarea = () =>{
       })
         console.log(completada);
         console.log(sincompletar);
-      let nuevo = Object.values(completada).concat(sincompletar);
+      let nuevo = Object.values(completada).concat(Object.values(sincompletar));
       console.log(nuevo);
-      
+      db={...nuevo};
+      $contenedor.textContent="";
+      Object.values(db).forEach(el => {
+        $clone = $template.cloneNode(true);
+        if(el.Estado){
+          $clone.getElementById("tarea").classList.replace('tarea','success');
+        }
+        $clone.querySelector("p").textContent= `${el.Nombre.toUpperCase()}`;
+        $clone.querySelector("img").dataset.id=el.Id;
+        $clone.querySelector("span").dataset.id=el.Id;
+        
+      $fragment.appendChild($clone);
+      });
+      $contenedor.appendChild($fragment);
     }
   });
 }

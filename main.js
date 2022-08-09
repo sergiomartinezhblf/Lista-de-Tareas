@@ -17,7 +17,8 @@ const imprimeTarea =()=>{
     $clone = $template.cloneNode(true);
     if(el.Estado){
       $clone.getElementById("tarea").classList.replace('tarea','success');
-    }
+      $clone.getElementById("texto-tarea").classList.replace('undone','done');
+    } 
     $clone.querySelector("p").textContent= `${el.Nombre.toUpperCase()}`;
     $clone.querySelector("img").dataset.id=el.Id;
     $clone.querySelector("span").dataset.id=el.Id;
@@ -30,6 +31,7 @@ const imprimeTarea =()=>{
 
 document.addEventListener("submit",e =>{
    e.preventDefault(); 
+   document.getElementById("mensaje-confirm").style.display="none";
    $contenedor.textContent="";
     nombreTarea = $texto.value;
     const tarea = {
@@ -67,10 +69,9 @@ const borrarTarea = () =>{
     if(e.target.classList.contains('delate-icon')){      
       e.target.parentElement.parentElement.style.display="none";
       delete db[e.target.dataset.id];
-    }
-    
+    }   
 });
-   imprimeTarea();
+     imprimeTarea();
 };
 
 const ordenarTarea = () =>{
@@ -87,29 +88,36 @@ const ordenarTarea = () =>{
         console.log(sincompletar);
       let nuevo = Object.values(completada).concat(Object.values(sincompletar));
       console.log(nuevo);
+      db={};
       db={...nuevo};
+      nuevo={};
       $contenedor.textContent="";
-      Object.values(db).forEach(el => {
-        $clone = $template.cloneNode(true);
-        if(el.Estado){
-          $clone.getElementById("tarea").classList.replace('tarea','success');
-        }
-        $clone.querySelector("p").textContent= `${el.Nombre.toUpperCase()}`;
-        $clone.querySelector("img").dataset.id=el.Id;
-        $clone.querySelector("span").dataset.id=el.Id;
-        
-      $fragment.appendChild($clone);
-      });
-      $contenedor.appendChild($fragment);
+      imprimeTarea();
     }
+    
   });
 }
 
+const borrarTodo =()=>{
+  document.getElementById("eliminar").addEventListener("click", ()=>{
+    document.getElementById("mensaje-confirm").style.display="flex";
+    document.getElementById("btn-cancelar").addEventListener("click", ()=>{
+      document.getElementById("mensaje-confirm").style.display="none";
+    });
+   document.getElementById("btn-confirm").addEventListener("click",()=>{
+       db = {};
+       document.getElementById("mensaje-confirm").style.display="none";
+       $contenedor.textContent="";
+       console.log(db);
+    });
+  });
+}
 
 
 borrarTarea();
 tareaCompletada();
 ordenarTarea();
+borrarTodo();
 
 
 

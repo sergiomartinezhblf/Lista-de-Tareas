@@ -12,10 +12,22 @@
         <h1>App Lista de Tareas</h1>
     </header>
     <form id="formulario">
+        <div>
         <input type="text" id="texto" placeholder="Agrega tu tarea" required autocomplete="off">
         <button class="add-btn" type="submit">+</button>
+        </div>
+        <div>
         <button id="ordenar" class="order">Ordenar</button>
+        <button id="eliminar">Eliminar</button>
+        </div>
     </form>
+    <div id="mensaje-confirm">
+        <h3>¿Deseas eliminar todas las tareas?</h3>
+        <div class="botones-confirmacion">
+        <button id="btn-confirm">SI</button>
+        <button id="btn-cancelar">NO</button>
+        </div>
+    </div>
     <section id="contenedor-tareas">
      
      </div>
@@ -25,7 +37,7 @@
 
     <template id="template">
         <div id="tarea" class="tarea">
-            <p>Tarea 1</p>
+            <p id="texto-tarea" class="undone">Tarea 1</p>
             <div class="buttons">
             <img class="check-icon"src="/assets/check-icon.svg" alt="check icon">
             <span class="delate-icon">x</span>

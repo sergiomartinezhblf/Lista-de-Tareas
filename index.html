@@ -8,9 +8,13 @@
     <title>Lista de Tareas</title>
 </head>
 <body>
+
+    <!--TITULO DE LA APLICACIÓN-->
     <header>
         <h1>App Lista de Tareas</h1>
     </header>
+
+    <!--FORMULARIO PARA INGRESAR LAS TAREAS-->
     <form id="formulario">
         <div>
         <input type="text" id="texto" placeholder="Agrega tu tarea" required autocomplete="off">
@@ -21,6 +25,8 @@
         <button id="eliminar">Eliminar</button>
         </div>
     </form>
+
+    <!--MENSAJE DE CONFIRMACIÓN DE ELIMINACIÓN DE TODAS LAS TAREAS-->
     <div id="mensaje-confirm">
         <h3>¿Deseas eliminar todas las tareas?</h3>
         <div class="botones-confirmacion">
@@ -28,13 +34,15 @@
         <button id="btn-cancelar">NO</button>
         </div>
     </div>
+
+    <!--CONTENEDOR DE TAREAS VACIO A LLENAR POR MEDIO DEL TEMPLATE-->
     <section id="contenedor-tareas">
      
      </div>
        
     </section>
  
-
+   <!--TEMPLATE DE TAREAS-->
     <template id="template">
         <div id="tarea" class="tarea">
             <p id="texto-tarea" class="undone">Tarea 1</p>

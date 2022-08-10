@@ -1,3 +1,4 @@
+//REFERENCIAS PRINCIPALES AL DOM Y DEFINICIÓN DE VARIABLES
 const $formulario = document.getElementById("formulario");
 const $texto = document.getElementById("texto");
 const $template = document.getElementById("template").content;
@@ -9,8 +10,10 @@ let completada= {};
 let sincompletar={};
 let x = 1;
 
+//FUNCIÓN GENEERADORA DE ID
 const genId = ()=> x++;
 
+//FUNCIÓN QUE RENDERIZA LAS TAREAS POR MEDIO DEL TEMPLETE CON EL USO DE FRAGMENT Y CLONENODE
 const imprimeTarea =()=>{
 
   Object.values(db).forEach(el => {
@@ -28,7 +31,7 @@ const imprimeTarea =()=>{
   $contenedor.appendChild($fragment);
 }
 
-
+//CREACIÓN DE LOS OBJETOS DE LAS TAREAS POR MEDIO DEL FORMULARIO
 document.addEventListener("submit",e =>{
    e.preventDefault(); 
    document.getElementById("mensaje-confirm").style.display="none";
@@ -51,7 +54,7 @@ console.log(db);
 
 
 
-
+//FUNCIÓN QUE CAMBIA EL ESTADO A TRUE DE LA TAREA COMPLETADA Y AGREGA LOS ESTILOS DE LA CLASE SUCCESS
 const tareaCompletada = () =>{
    document.addEventListener("click", e => {
       if(e.target.classList.contains('check-icon')){
@@ -64,6 +67,7 @@ const tareaCompletada = () =>{
    imprimeTarea();
 };
 
+//FUNCIÓN QUE ELIMINA LA TAREA DE LA COLECCIÓN DE OBJETOS
 const borrarTarea = () =>{
   document.addEventListener("click", e => {
     if(e.target.classList.contains('delate-icon')){      
@@ -74,6 +78,9 @@ const borrarTarea = () =>{
      imprimeTarea();
 };
 
+/*FUNCIÓN QUE ORDENA LAS TAREAS POR MEDIO DEL ESTADO A TRAVEZ DE CREACION DE
+DOS COLECCIONES DE OBJETOS PARA LUEGO CONCATENARLAS Y CONSERVEN EL ORDEN DE INGRESO A
+LA COLECCION DE OBJETOS*/ 
 const ordenarTarea = () =>{
   document.addEventListener("click", e =>{
     if(e.target.classList.contains('order')){
@@ -98,6 +105,7 @@ const ordenarTarea = () =>{
   });
 }
 
+//FUNCION PARA ELIMINAR LA COLECCION DE OBJETOS DE LAS TAREAS Y LA CONFIRMACIÓN PARA HACERLO
 const borrarTodo =()=>{
   document.getElementById("eliminar").addEventListener("click", ()=>{
     document.getElementById("mensaje-confirm").style.display="flex";
@@ -113,6 +121,7 @@ const borrarTodo =()=>{
   });
 }
 
+//LLAMADA A LAS FUNCIONES 
 
 borrarTarea();
 tareaCompletada();

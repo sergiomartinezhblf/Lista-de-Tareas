@@ -1,3 +1,5 @@
+
+/* DEFINICION DE VARIABLES PARA LOS COLORES*/
 :root{
     --ligth-color: rgb(212, 206, 206);
     --primary-color:rgb(54, 140, 216);
@@ -7,6 +9,7 @@
     --warning-color: rgb(224, 236, 119);
 }
 
+/*NORMALIZACIÓN BASICA*/
 *{
     margin:0;
     padding: 0;
@@ -23,6 +26,8 @@ header,form,section{
     width: 400px;
     margin: 0 auto;
 }
+
+/*ESTILOS DEL TITULO*/
 
 header{
     background-color: var(--primary-color);
@@ -41,6 +46,8 @@ h1{
     font-size: 1.5rem;
 }
 
+/*ESTILOS DEL FORMULARIO*/
+
 form{
     background-color: var(--secundary-color);
     height: 120px;
@@ -49,6 +56,8 @@ form{
     justify-content: space-evenly;
     align-items: center;
 }
+
+/*ESTILOS DEL MENSAJE DE CONFIRMACIÓN*/
 
 #mensaje-confirm{
     width: 400px;
@@ -100,7 +109,7 @@ form{
 }
 
 #ordenar{
-    background-color: rgb(230, 151, 48);
+    background-color: var(--primary-color);
     padding: 10px 5px;
     border-radius: 10px;
     color: white;
@@ -145,6 +154,8 @@ form{
 .add-btn:hover{
     transform: scale(1.1);
 } 
+
+/*ESTILOS DEL TEMPLETE DE TAREAS*/
 
 .tarea{
     width: 100%;
